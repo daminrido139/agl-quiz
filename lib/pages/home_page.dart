@@ -1,6 +1,7 @@
+import 'package:agl_quiz/widgets/introduction_widget.dart';
+import 'package:agl_quiz/widgets/profile_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:rido/widgets/introduction_widget.dart';
-import 'package:rido/widgets/profile_widget.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
