@@ -2,6 +2,10 @@
 
 This flutter application displays my name, shows my picture when a button is clicked, and integrates the Gemini Chat API. The Flutter app is hosted on GitHub and integrated into an AGL image using Yocto recipes.
 
+![Image 1](assets/images/ss1.png) 
+![Image 2](assets/images/ss2.png) 
+![Image 3](assets/images/ss3.png) 
+
 ## Overview
 
 ```
