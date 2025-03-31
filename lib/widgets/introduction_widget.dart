@@ -44,7 +44,7 @@ class IntroductionWidget extends StatelessWidget {
             ),
             TextSpan(
               text:
-                  " and interested in working on Automotive Grade Linux (AGL), specifically enhancing its speech recognition app.\n\n",
+                  " and interested in working on Automotive Grade Linux (AGL), any flutter related projects.\n\n",
               style: TextStyle(fontSize: 18),
             ),
           ],

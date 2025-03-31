@@ -30,7 +30,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
       animation: _controller,
       builder: (context, child) {
         return Transform.translate(
-          offset: Offset(0, 10*(_controller.value - 1)),
+          offset: Offset(0, 100*(_controller.value - 1)),
           child: Opacity(
             opacity:_controller.value* _controller.value,
             child: child,

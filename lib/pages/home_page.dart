@@ -1,7 +1,8 @@
-import 'package:agl_quiz/widgets/introduction_widget.dart';
-import 'package:agl_quiz/widgets/profile_widget.dart';
+import 'package:agl_quiz/pages/about_page.dart';
+import 'package:agl_quiz/pages/chat_page.dart';
+import 'package:agl_quiz/providers/theme_provider.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,32 +12,55 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool showImage = false;
+  static const List<Widget> pages = [
+    AboutPage(),
+    ChatScreen()
+  ];
+
+  int currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(flex:2,child: showImage?Center(child: ProfileWidget()):SizedBox.shrink()),
-          MaterialButton(
-            minWidth: 120,
-            height: 60,
-            onPressed: () {
-              setState(() {
-                showImage = !showImage;
-              });
-            },
-            color: Colors.green.shade800,
-            child: Text(showImage? "Hide":"Show", style: TextStyle(fontSize: 24),),
+        body: Row(
+      children: [
+        NavigationRail( 
+          minWidth: 100,
+          destinations: [
+            NavigationRailDestination(
+              icon: Icon(Icons.home_outlined),
+              selectedIcon: Icon(Icons.home),
+              label: Text("Home"),
+            ),
+            NavigationRailDestination(
+              icon: Icon(Icons.chat_outlined),
+              selectedIcon: Icon(Icons.chat),
+              label: Text("Chat"),
+            )
+          ],
+          selectedIndex: currentIndex,
+          onDestinationSelected: (value) {
+            setState(
+              () {
+                setState(() {
+                  currentIndex = value;
+                });
+              },
+            );
+          },
+        ),
+        VerticalDivider(
+          width: 1,
+          thickness: 1,
+          color: (Provider.of<ThemeProvider>(context).isDarkMode)?Colors.grey.shade700: Colors.grey.shade300,
+        ),
+        Expanded(
+          child: IndexedStack(
+            index: currentIndex,
+            children: pages,
           ),
-          SizedBox(height: 10),
-          IntroductionWidget(),
-          Spacer(),
-        ],
-      ),
-    );
+        ),
+      ],
+    ));
   }
 }
-
-
